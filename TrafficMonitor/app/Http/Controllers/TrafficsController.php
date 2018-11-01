@@ -38,20 +38,18 @@ class TrafficsController extends Controller
 
     public function report($month)
     {
-        $report = Traffic::join('employees', 'traffics.employee_id', '=', 'employees.id')->join('companies', 'employees.company_id', '=', 'companies.id')->
+        $traffics = Traffic::join('employees', 'traffics.employee_id', '=', 'employees.id')->join('companies', 'employees.company_id', '=', 'companies.id')->
         select('employees.company_id', 'companies.name', 'companies.quota', DB::raw('SUM(traffics.bytes_amount) / 1099511627776 as used'))->
         whereMonth('traffics.created_at', $month)->groupBy('employees.company_id', 'companies.name', 'companies.quota')->getQuery()->get();
 
-        for ($i = 0; $i < count($report); $i++) {
-            if (((array)$report[$i])['used'] > ((array)$report[$i])['quota']) {
-                $final_report[] = $report[$i];
+        $report = [];
+
+        foreach ($traffics as $traffic) {
+            if (((array)$traffic)['used'] > ((array)$traffic)['quota']) {
+                $report[] = $traffic;
             }
         }
 
-        if (!isset($final_report)) {
-            $final_report = 'There are no data.';
-        }
-
-        return response()->json($final_report, Response::HTTP_OK);
+        return response()->json($report, Response::HTTP_OK);
     }
 }
