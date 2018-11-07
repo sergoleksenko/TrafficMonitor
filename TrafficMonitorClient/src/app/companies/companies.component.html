@@ -1,6 +1,35 @@
 <h1>Companies:</h1>
-<ul>
-    <li *ngFor="let company of companies">
-        {{company.name}} - {{company.quota}} TB <a href="">[edit]</a><a href="" style="color: red">[delete]</a>
-    </li>
-</ul>
+<button type="button" id="btn-generate" routerLink="/traffics/generate">Generate traffics</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Quota (TB)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let company of companies | paginate: { itemsPerPage: 15, currentPage: page }">
+        <td>{{company.name}}</td>
+        <td>{{company.quota}}</td>
+        <td>
+            <button disabled>Edit</button>
+            <button routerLink="/companies/{{company.id}}/delete">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="has-text-centered">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<br/>
+<h4>Report for companies by month:</h4>
+<form>
+    <select name="month" [(ngModel)]="selectedMonth">
+        <option selected disabled value="0">Choose a month</option>
+        <option *ngFor="let month of months" [value]="month.value">
+            {{month.viewValue}}
+        </option>
+    </select>
+    <input *ngIf="selectedMonth != 0" type="submit" id="btn-report" value="Report"
+           routerLink="/report/{{selectedMonth}}">
+</form>

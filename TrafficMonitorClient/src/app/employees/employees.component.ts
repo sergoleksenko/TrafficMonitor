@@ -4,11 +4,12 @@ import {EmployeesService} from './employees.service';
 
 @Component({
     selector: 'app-employess',
-    templateUrl: './employess.component.html',
-    styleUrls: ['./employess.component.css']
+    templateUrl: './employees.component.html',
+    styleUrls: ['./employees.component.css'],
 })
-export class EmployessComponent implements OnInit {
+export class EmployeesComponent implements OnInit {
     employees: Employee[] = [];
+    page = 1;
 
     constructor(private employeeService: EmployeesService) {
     }

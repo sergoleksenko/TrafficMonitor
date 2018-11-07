@@ -5,12 +5,20 @@ import {HttpClient} from '@angular/common/http';
     providedIn: 'root'
 })
 export class CompaniesService {
-    baseUrl = 'http://localhost:8000';
+    private apiUrl = 'http://localhost:8000';
 
     constructor(private httpClient: HttpClient) {
     }
 
-    getCompanies() {
-        return this.httpClient.get(this.baseUrl + '/api/companies');
+    all() {
+        return this.httpClient.get(this.apiUrl + '/api/companies');
+    }
+
+    delete(id) {
+        return this.httpClient.delete(this.apiUrl + '/api/companies/' + id);
+    }
+
+    report(month) {
+        return this.httpClient.get(this.apiUrl + '/api/report/' + month);
     }
 }
