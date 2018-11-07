@@ -6,7 +6,6 @@ use App\Employee;
 use App\Traffic;
 use Faker\Factory;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class TrafficsController extends Controller
 {
@@ -34,22 +33,5 @@ class TrafficsController extends Controller
         }
 
         return response(null, Response::HTTP_ACCEPTED);
-    }
-
-    public function report($month)
-    {
-        $traffics = Traffic::join('employees', 'traffics.employee_id', '=', 'employees.id')->join('companies', 'employees.company_id', '=', 'companies.id')->
-        select('employees.company_id', 'companies.name', 'companies.quota', DB::raw('SUM(traffics.bytes_amount) / 1099511627776 as used'))->
-        whereMonth('traffics.created_at', $month)->groupBy('employees.company_id', 'companies.name', 'companies.quota')->getQuery()->get();
-
-        $report = [];
-
-        foreach ($traffics as $traffic) {
-            if (((array)$traffic)['used'] > ((array)$traffic)['quota']) {
-                $report[] = $traffic;
-            }
-        }
-
-        return response()->json($report, Response::HTTP_OK);
     }
 }

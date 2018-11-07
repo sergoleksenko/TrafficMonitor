@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Traffic;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class CompaniesController extends Controller
 {
@@ -37,5 +39,22 @@ class CompaniesController extends Controller
         $company->delete();
 
         return response()->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function report($month)
+    {
+        $traffics = Traffic::join('employees', 'traffics.employee_id', '=', 'employees.id')->join('companies', 'employees.company_id', '=', 'companies.id')->
+        select('employees.company_id', 'companies.name', 'companies.quota', DB::raw('SUM(traffics.bytes_amount) / 1099511627776 as used'))->
+        whereMonth('traffics.created_at', $month)->groupBy('employees.company_id', 'companies.name', 'companies.quota')->getQuery()->get();
+
+        $report = [];
+
+        foreach ($traffics as $traffic) {
+            if (((array)$traffic)['used'] > ((array)$traffic)['quota']) {
+                $report[] = $traffic;
+            }
+        }
+
+        return response()->json($report, Response::HTTP_OK);
     }
 }

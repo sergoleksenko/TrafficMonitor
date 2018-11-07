@@ -23,6 +23,7 @@ Route::get('companies/{company}', 'CompaniesController@get');
 Route::post('companies', 'CompaniesController@save');
 Route::put('companies/{company}', 'CompaniesController@update');
 Route::delete('companies/{company}', 'CompaniesController@delete');
+Route::get('report/{month}', 'CompaniesController@report');
 
 
 //Employees
@@ -34,4 +35,3 @@ Route::delete('employees/{employee}', 'EmployeesController@delete');
 
 //Traffics
 Route::post('traffics/generate', 'TrafficsController@generate');
-Route::get('traffics/report/{month}', 'TrafficsController@report');

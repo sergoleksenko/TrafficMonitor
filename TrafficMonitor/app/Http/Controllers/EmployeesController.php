@@ -8,9 +8,14 @@ use Illuminate\Http\Response;
 
 class EmployeesController extends Controller
 {
-    public function all()
+    public function all(Request $request)
     {
-        return Employee::all();
+        if ($request->input('company') == 'true') {
+            return Employee::join('companies', 'employees.company_id', '=', 'companies.id')->
+            select('employees.id', 'companies.name as company', 'employees.name', 'employees.email', 'employees.created_at', 'employees.updated_at')->getQuery()->get();
+        } else {
+            return Employee::all();
+        }
     }
 
     public function get(Employee $employee)
