@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Company} from './company';
 import {CompaniesService} from './companies.service';
+import {NgForm} from '@angular/forms';
 
 export interface Month {
     value: string;
@@ -16,6 +17,7 @@ export class CompaniesComponent implements OnInit {
     companies: Company[] = [];
     page = 1;
     selectedMonth = '0';
+    isViewable = false;
 
     months: Month[] = [
         {value: '01', viewValue: 'January'},
@@ -45,5 +47,23 @@ export class CompaniesComponent implements OnInit {
 
     deleteCompany(id) {
         this.companiesService.delete(id).subscribe(data => this.loadData());
+    }
+
+    openForm() {
+        this.isViewable = true;
+    }
+
+    closeForm(form: NgForm) {
+        form.resetForm();
+        this.isViewable = false;
+    }
+
+    addCompany(form: NgForm) {
+        console.log(new Company(form.value.name, form.value.quota));
+        this.companiesService.add(new Company(form.value.name, form.value.quota)).subscribe(data => {
+            this.loadData();
+            form.resetForm();
+            this.isViewable = false;
+        });
     }
 }

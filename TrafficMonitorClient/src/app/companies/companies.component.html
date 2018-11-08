@@ -5,6 +5,7 @@
     <tr>
         <th>Name</th>
         <th>Quota (TB)</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -12,7 +13,7 @@
         <td>{{company.name}}</td>
         <td>{{company.quota}}</td>
         <td>
-            <button class="btn btn-default" disabled>Edit</button>
+            <!--<button class="btn btn-default" disabled>Edit</button>-->
             <button class="btn btn-default" style="background-color: red; color: white;"
                     (click)="deleteCompany(company.id)">Delete
             </button>
@@ -23,14 +24,45 @@
 <div class="has-text-centered">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
-<br/>
-<h4>Monthly report for companies:</h4>
-<select name="month" [(ngModel)]="selectedMonth" #month="ngModel">
-    <option selected disabled value="0">Choose a month</option>
-    <option *ngFor="let month of months" [value]="month.value">
-        {{month.viewValue}}
-    </option>
-</select>
-<button class="btn btn-default" [disabled]="month.pristine" type="submit" routerLink="/report/{{selectedMonth}}">
-    Report
-</button>
+
+<div class="row">
+    <div class="col-sm-4">
+        <button class="btn btn-default" (click)="openForm()">Add company</button>
+        <form #addCompanyForm="ngForm" *ngIf="isViewable">
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" name="name" type="text" [(ngModel)]="name" required>
+            </div>
+            <div class="form-group">
+                <label>Quota (TB):</label>
+                <input class="form-control" name="quota" type="number" [(ngModel)]="quota" required>
+            </div>
+            <div class="form-group">
+                <button [disabled]="addCompanyForm.invalid" class="btn btn-default"
+                        style="background-color: mediumseagreen; color: white;"
+                        (click)="addCompany(addCompanyForm)">
+                    Save
+                </button>
+                <button class="btn btn-default" (click)="closeForm(addCompanyForm)">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-sm-4">
+                <select class="form-control" name="month" [(ngModel)]="selectedMonth" #month="ngModel">
+                    <option selected disabled value="0">Choose a month</option>
+                    <option *ngFor="let month of months" [value]="month.value">
+                        {{month.viewValue}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-default" [disabled]="month.pristine" type="submit"
+                        routerLink="/report/{{selectedMonth}}">
+                    Report
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

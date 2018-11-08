@@ -21,4 +21,8 @@ export class CompaniesService {
     report(month) {
         return this.httpClient.get(this.apiUrl + '/api/report/' + month);
     }
+
+    add(body) {
+        return this.httpClient.post(this.apiUrl + '/api/companies', body);
+    }
 }

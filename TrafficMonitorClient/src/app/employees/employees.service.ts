@@ -18,4 +18,8 @@ export class EmployeesService {
     delete(id) {
         return this.httpClient.delete(this.apiUrl + '/api/employees/' + id);
     }
+
+    add(body) {
+        return this.httpClient.post(this.apiUrl + '/api/employees', body);
+    }
 }
