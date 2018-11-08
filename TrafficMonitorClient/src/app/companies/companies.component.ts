@@ -32,10 +32,18 @@ export class CompaniesComponent implements OnInit {
         {value: '12', viewValue: 'December'},
     ];
 
-    constructor(private companyService: CompaniesService) {
+    constructor(private companiesService: CompaniesService) {
     }
 
     ngOnInit() {
-        this.companyService.all().subscribe((data: Company[]) => this.companies = data);
+        this.loadData();
+    }
+
+    loadData() {
+        this.companiesService.all().subscribe((data: Company[]) => this.companies = data);
+    }
+
+    deleteCompany(id) {
+        this.companiesService.delete(id).subscribe(data => this.loadData());
     }
 }

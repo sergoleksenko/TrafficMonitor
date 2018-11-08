@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ReportComponent implements OnInit {
     report: Report[] = [];
+    page = 1;
     month;
 
     constructor(private activateRoute: ActivatedRoute, private companiesService: CompaniesService) {
@@ -17,9 +18,6 @@ export class ReportComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.companiesService.report(this.month).subscribe((data: Report[]) => {
-            this.report = data;
-            console.log(data);
-        });
+        this.companiesService.report(this.month).subscribe((data: Report[]) => this.report = data);
     }
 }

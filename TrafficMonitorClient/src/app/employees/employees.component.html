@@ -8,13 +8,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 15, currentPage: page }">
+    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 10, currentPage: page }">
         <td>{{employee.name}}</td>
         <td>{{employee.email}}</td>
         <td>{{employee.company}}</td>
         <td>
-            <button disabled>Edit</button>
-            <button routerLink="/employees/{{employee.id}}/delete">Delete</button>
+            <button class="btn btn-default" disabled>Edit</button>
+            <button class="btn btn-default" style="background-color: red; color: white;"
+                    (click)="deleteEmployee(employee.id)">Delete
+            </button>
         </td>
     </tr>
     </tbody>
