@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Employee} from './employee';
-import {EmployeesService} from './employees.service';
+import {EmployeesService} from '../services/employees.service';
 import {NgForm} from '@angular/forms';
-import {CompaniesService} from '../companies/companies.service';
+import {CompaniesService} from '../services/companies.service';
 
 @Component({
     selector: 'app-employess',

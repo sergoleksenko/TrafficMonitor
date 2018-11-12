@@ -3,11 +3,11 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {CompaniesComponent} from './companies/companies.component';
 import {EmployeesComponent} from './employees/employees.component';
-import {RouterModule, Routes} from '@angular/router';
 import {TrafficComponent} from './traffic/traffic.component';
 import {ReportComponent} from './report/report.component';
 

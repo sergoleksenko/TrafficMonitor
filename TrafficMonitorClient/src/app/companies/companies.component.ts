@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Company} from './company';
-import {CompaniesService} from './companies.service';
+import {CompaniesService} from '../services/companies.service';
 import {NgForm} from '@angular/forms';
 
 export interface Month {

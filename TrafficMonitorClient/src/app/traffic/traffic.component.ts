@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TrafficService} from './traffic.service';
+import {TrafficService} from '../services/traffic.service';
 
 @Component({
     selector: 'app-traffic',
