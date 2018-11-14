@@ -46,7 +46,9 @@ export class CompaniesComponent implements OnInit {
     }
 
     deleteCompany(id) {
-        this.companiesService.delete(id).subscribe(data => this.loadData());
+        if (confirm('Really?')) {
+            this.companiesService.delete(id).subscribe(data => this.loadData());
+        }
     }
 
     openForm() {
