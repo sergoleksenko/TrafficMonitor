@@ -46,7 +46,7 @@ export class CompaniesComponent implements OnInit {
     }
 
     deleteCompany(id) {
-        if (confirm('Really?')) {
+        if (confirm('Are you sure you want to delete this record?')) {
             this.companiesService.delete(id).subscribe(data => this.loadData());
         }
     }
@@ -61,7 +61,6 @@ export class CompaniesComponent implements OnInit {
     }
 
     addCompany(form: NgForm) {
-        console.log(new Company(form.value.name, form.value.quota));
         this.companiesService.add(new Company(form.value.name, form.value.quota)).subscribe(data => {
             this.loadData();
             form.resetForm();

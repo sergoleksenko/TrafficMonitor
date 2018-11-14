@@ -37,7 +37,9 @@ export class EmployeesComponent implements OnInit {
     }
 
     deleteEmployee(id) {
-        this.employeeService.delete(id).subscribe(data => this.loadData());
+        if (confirm('Are you sure you want to delete this record?')) {
+            this.employeeService.delete(id).subscribe(data => this.loadData());
+        }
     }
 
     openForm() {
