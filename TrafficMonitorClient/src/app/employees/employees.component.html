@@ -15,9 +15,7 @@
         <td>{{employee.company}}</td>
         <td>
             <!--<button class="btn btn-default" disabled>Edit</button>-->
-            <button class="btn btn-default" name="delete"
-                    (click)="deleteEmployee(employee.id)">Delete
-            </button>
+            <button class="btn btn-default btn-delete" (click)="deleteEmployee(employee.id)">Delete</button>
         </td>
     </tr>
     </tbody>

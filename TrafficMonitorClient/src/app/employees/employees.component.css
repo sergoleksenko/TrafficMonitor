@@ -2,7 +2,7 @@ input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
     border: solid red 2px;
 }
 
-button[name=delete] {
+.btn-delete {
     background-color: red;
     color: white;
 }

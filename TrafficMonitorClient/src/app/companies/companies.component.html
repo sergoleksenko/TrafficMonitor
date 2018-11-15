@@ -14,9 +14,7 @@
         <td>{{company.quota}}</td>
         <td>
             <!--<button class="btn btn-default" disabled>Edit</button>-->
-            <button class="btn btn-default" name="delete"
-                    (click)="deleteCompany(company.id)">Delete
-            </button>
+            <button class="btn btn-default btn-delete" (click)="deleteCompany(company.id)">Delete</button>
         </td>
     </tr>
     </tbody>
