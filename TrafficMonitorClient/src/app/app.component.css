@@ -3,3 +3,14 @@
     padding: 10px;
     list-style: none;
 }
+
+.sidebar-nav a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    font-size: medium;
+}
+
+.sidebar-nav a:hover {
+    background-color: lightcyan;
+}
