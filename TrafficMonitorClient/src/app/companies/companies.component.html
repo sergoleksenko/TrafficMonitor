@@ -13,13 +13,13 @@
         <td>{{company.name}}</td>
         <td>{{company.quota}}</td>
         <td>
-            <!--<button class="btn btn-default" disabled>Edit</button>-->
-            <button class="btn btn-default btn-delete" (click)="deleteCompany(company.id)">Delete</button>
+            <button class="btn btn-default" routerLink="/companies/{{company.id}}/edit">Edit</button>
+            <button class="btn btn-danger" (click)="deleteCompany(company.id)">Delete</button>
         </td>
     </tr>
     </tbody>
 </table>
-<div class="has-text-centered">
+<div>
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>
 
@@ -28,16 +28,15 @@
         <button class="btn btn-default" (click)="openForm()">Add company</button>
         <form #addCompanyForm="ngForm" *ngIf="isViewable">
             <div class="form-group">
-                <label>Name:</label>
-                <input class="form-control" name="name" type="text" [(ngModel)]="name" required>
+                <label for="name">Name:</label>
+                <input class="form-control" name="name" id="name" type="text" [(ngModel)]="name" required>
             </div>
             <div class="form-group">
-                <label>Quota (TB):</label>
-                <input class="form-control" name="quota" type="number" [(ngModel)]="quota" required>
+                <label for="quota">Quota (TB):</label>
+                <input class="form-control" name="quota" id="quota" type="number" [(ngModel)]="quota" required>
             </div>
             <div class="form-group">
-                <button [disabled]="addCompanyForm.invalid" class="btn btn-default"
-                        style="background-color: mediumseagreen; color: white;"
+                <button [disabled]="addCompanyForm.invalid" class="btn btn-success"
                         (click)="addCompany(addCompanyForm)">
                     Save
                 </button>

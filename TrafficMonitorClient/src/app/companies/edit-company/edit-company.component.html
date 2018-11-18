@@ -1,0 +1,20 @@
+<h1>Edit Company:</h1>
+<div class="row">
+    <div class="col-sm-4">
+        <form #editCompanyForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" name="name" id="name" type="text" [(ngModel)]="company.name" required>
+            </div>
+            <div class="form-group">
+                <label for="quota">Quota (TB):</label>
+                <input class="form-control" name="quota" id="quota" type="number" [(ngModel)]="company.quota" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" [disabled]="editCompanyForm.invalid"
+                        (click)="editCompany()">Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
