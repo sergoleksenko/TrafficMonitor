@@ -3,7 +3,6 @@ import {Employee} from './employee';
 import {EmployeesService} from '../services/employees.service';
 import {NgForm} from '@angular/forms';
 import {CompaniesService} from '../services/companies.service';
-import {Company} from '../companies/company';
 
 @Component({
     selector: 'app-employess',
@@ -30,9 +29,9 @@ export class EmployeesComponent implements OnInit {
     }
 
     getCompanies() {
-        this.companiesService.all().subscribe((data: Array<Company>) => {
+        this.companiesService.all().subscribe((data: Array<Object>) => {
             for (let i = 0; i < data.length; i++) {
-                this.companies.push({value: data[i].id, viewValue: data[i].name});
+                this.companies.push({value: data[i]['id'], viewValue: data[i]['name']});
             }
         });
     }
