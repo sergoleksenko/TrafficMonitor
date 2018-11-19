@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../employee';
 import {EmployeesService} from '../../services/employees.service';
 import {CompaniesService} from '../../services/companies.service';
+import {Company} from '../../companies/company';
 
 @Component({
     selector: 'app-edit-employee',
@@ -30,9 +31,9 @@ export class EditEmployeeComponent implements OnInit {
     loadData(id) {
         this.employeesService.get(id).subscribe((employeeData: Employee) => {
             this.employee = employeeData;
-            this.companiesService.all().subscribe((companiesData: Array<Object>) => {
+            this.companiesService.all().subscribe((companiesData: Array<Company>) => {
                 for (let i = 0; i < companiesData.length; i++) {
-                    this.companies.push({value: companiesData[i]['id'], viewValue: companiesData[i]['name']});
+                    this.companies.push({value: companiesData[i].id, viewValue: companiesData[i].name});
                 }
             });
         });
