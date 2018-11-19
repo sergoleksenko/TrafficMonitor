@@ -27,6 +27,7 @@ Route::get('report/{month}', 'CompaniesController@report');
 
 
 //Employees
+Route::get('employees/company/{company}', 'EmployeesController@getEmployeesForCompany');
 Route::get('employees', 'EmployeesController@all');
 Route::get('employees/{employee}', 'EmployeesController@get');
 Route::post('employees', 'EmployeesController@save');

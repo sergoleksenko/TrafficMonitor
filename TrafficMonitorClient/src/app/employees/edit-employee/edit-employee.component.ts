@@ -12,10 +12,7 @@ import {CompaniesService} from '../../services/companies.service';
 export class EditEmployeeComponent implements OnInit {
 
     id: number;
-    employee: Employee = {
-        name: '',
-        email: ''
-    };
+    employee: Employee = {name: '', email: ''};
     companies = [];
 
     constructor(private activatedRoute: ActivatedRoute, private employeesService: EmployeesService,

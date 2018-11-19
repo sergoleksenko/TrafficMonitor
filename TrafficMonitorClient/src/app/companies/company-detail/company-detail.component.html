@@ -1,0 +1,19 @@
+<h1>Company detail:</h1>
+<h3>{{company.name}} (quota: {{company.quota}} TB)</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 10, currentPage: page }">
+        <td>{{employee.name}}</td>
+        <td><a href="mailto: {{employee.email}}">{{employee.email}}</a></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

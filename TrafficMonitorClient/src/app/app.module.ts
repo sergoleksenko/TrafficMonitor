@@ -12,11 +12,13 @@ import {TrafficComponent} from './traffic/traffic.component';
 import {ReportComponent} from './report/report.component';
 import {EditCompanyComponent} from './companies/edit-company/edit-company.component';
 import {EditEmployeeComponent} from './employees/edit-employee/edit-employee.component';
+import {CompanyDetailComponent} from './companies/company-detail/company-detail.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/companies', pathMatch: 'full'},
     {path: 'companies', component: CompaniesComponent},
     {path: 'companies/:id/edit', component: EditCompanyComponent},
+    {path: 'companies/:id/detail', component: CompanyDetailComponent},
     {path: 'employees', component: EmployeesComponent},
     {path: 'employees/:id/edit', component: EditEmployeeComponent},
     {path: 'traffics/generate', component: TrafficComponent},
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
         ReportComponent,
         EditCompanyComponent,
         EditEmployeeComponent,
+        CompanyDetailComponent,
     ],
     imports: [
         BrowserModule,

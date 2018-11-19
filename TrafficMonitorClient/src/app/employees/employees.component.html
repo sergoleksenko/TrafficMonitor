@@ -11,7 +11,7 @@
     <tbody>
     <tr *ngFor="let employee of employees | paginate: { itemsPerPage: 10, currentPage: page }">
         <td>{{employee.name}}</td>
-        <td>{{employee.email}}</td>
+        <td><a href="mailto: {{employee.email}}">{{employee.email}}</a></td>
         <td>{{employee.company}}</td>
         <td>
             <button class="btn btn-default" routerLink="/employees/{{employee.id}}/edit">Edit</button>

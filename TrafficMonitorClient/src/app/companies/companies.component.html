@@ -10,8 +10,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let company of companies | paginate: { itemsPerPage: 10, currentPage: page }">
-        <td>{{company.name}}</td>
-        <td>{{company.quota}}</td>
+        <td routerLink="/companies/{{company.id}}/detail">{{company.name}}</td>
+        <td routerLink="/companies/{{company.id}}/detail">{{company.quota}}</td>
         <td>
             <button class="btn btn-default" routerLink="/companies/{{company.id}}/edit">Edit</button>
             <button class="btn btn-danger" (click)="deleteCompany(company.id)">Delete</button>

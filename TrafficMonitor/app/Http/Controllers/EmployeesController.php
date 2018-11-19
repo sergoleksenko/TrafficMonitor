@@ -43,4 +43,11 @@ class EmployeesController extends Controller
 
         return response()->json(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function getEmployeesForCompany(Request $request)
+    {
+        $employees = Employee::where('company_id', '=', $request->route('company'))->get();
+
+        return response()->json($employees, Response::HTTP_OK);
+    }
 }

@@ -11,10 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EditCompanyComponent implements OnInit {
 
     id: number;
-    company: Company = {
-        name: '',
-        quota: ''
-    };
+    company: Company = {name: '', quota: ''};
 
     constructor(private activatedRoute: ActivatedRoute, private companiesService: CompaniesService, private router: Router) {
         this.activatedRoute.params.subscribe(params => this.id = params['id']);

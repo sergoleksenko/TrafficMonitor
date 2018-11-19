@@ -31,4 +31,8 @@ export class EmployeesService {
     edit(id, body) {
         return this.httpClient.put(this.apiUrl + '/api/employees/' + id, body);
     }
+
+    getEmployeesForCompany(id) {
+        return this.httpClient.get(this.apiUrl + '/api/employees/company/' + id);
+    }
 }

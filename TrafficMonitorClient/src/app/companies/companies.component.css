@@ -1,3 +1,7 @@
 input.ng-touched.ng-invalid {
     border: solid red 2px;
 }
+
+tbody tr:hover {
+    background-color: lightcyan !important;
+}
