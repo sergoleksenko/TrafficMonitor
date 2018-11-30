@@ -35,12 +35,15 @@ export class CompanyDetailComponent implements OnInit {
         });
     }
 
-    onSave() {
-        this.companiesService.edit(this.id, new Company(this.company.name, this.company.quota))
-            .subscribe(data => this.isEdit = !this.isEdit);
+    onSave(name, quota) {
+        this.companiesService.edit(this.id, new Company(name.viewModel, quota.viewModel))
+            .subscribe((data: Company) => {
+                this.company = data;
+                this.isEdit = !this.isEdit;
+            });
     }
 
-    onSave1(eee) {
-        console.log(eee);
+    onCancel() {
+        this.isEdit = !this.isEdit;
     }
 }
