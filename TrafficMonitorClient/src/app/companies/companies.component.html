@@ -1,6 +1,6 @@
 <h1>Companies:</h1>
 <button type="button" class="btn btn-default" routerLink="/traffics/generate">Generate traffics</button>
-<table class="table table-striped">
+<table class="table table-striped" onmousedown="return false">
     <thead>
     <tr>
         <th>Name</th>
@@ -13,8 +13,8 @@
         <td routerLink="/companies/{{company.id}}/detail">{{company.name}}</td>
         <td routerLink="/companies/{{company.id}}/detail">{{company.quota}}</td>
         <td>
-            <button class="btn btn-default" routerLink="/companies/{{company.id}}/edit">Edit</button>
-            <button class="btn btn-danger" (click)="deleteCompany(company.id)">Delete</button>
+            <button class="btn btn-default btn-sm" routerLink="/companies/{{company.id}}/edit">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteCompany(company.id)">Delete</button>
         </td>
     </tr>
     </tbody>
