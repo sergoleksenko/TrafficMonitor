@@ -36,3 +36,8 @@ Route::delete('employees/{employee}', 'EmployeesController@delete');
 
 //Traffics
 Route::post('traffics/generate', 'TrafficsController@generate');
+
+
+Route::resource('infy_om_companies', 'API\InfyOmCompanyAPIController');
+
+Route::resource('infy_om_employees', 'API\InfyOmEmployeeAPIController');
