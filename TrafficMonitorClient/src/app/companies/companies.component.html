@@ -1,5 +1,4 @@
 <h1>Companies:</h1>
-<button type="button" class="btn btn-default" routerLink="/traffics/generate">Generate traffics</button>
 <table class="table table-striped" onmousedown="return false">
     <thead>
     <tr>
@@ -13,7 +12,7 @@
         <td routerLink="/companies/{{company.id}}/detail">{{company.name}}</td>
         <td routerLink="/companies/{{company.id}}/detail">{{company.quota}}</td>
         <td>
-            <button class="btn btn-default btn-sm" routerLink="/companies/{{company.id}}/edit">Edit</button>
+            <button class="btn btn-outline-secondary btn-sm" routerLink="/companies/{{company.id}}/edit">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="deleteCompany(company.id)">Delete</button>
         </td>
     </tr>
@@ -25,7 +24,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <button class="btn btn-default" (click)="openForm()">Add company</button>
+        <button class="btn btn-outline-primary" (click)="openForm()">Add company</button>
         <form #addCompanyForm="ngForm" *ngIf="isViewable">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -40,7 +39,7 @@
                         (click)="addCompany(addCompanyForm)">
                     Save
                 </button>
-                <button class="btn btn-default" (click)="closeForm(addCompanyForm)">Cancel</button>
+                <button class="btn btn-outline-secondary" (click)="closeForm(addCompanyForm)">Cancel</button>
             </div>
         </form>
     </div>
@@ -55,7 +54,7 @@
                 </select>
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-default" [disabled]="month.pristine" type="submit"
+                <button class="btn btn-outline-primary" [disabled]="month.pristine" type="submit"
                         routerLink="/report/{{selectedMonth}}">
                     Report
                 </button>

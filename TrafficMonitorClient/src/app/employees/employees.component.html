@@ -14,7 +14,7 @@
         <td><a href="mailto: {{employee.email}}">{{employee.email}}</a></td>
         <td>{{employee.company}}</td>
         <td>
-            <button class="btn btn-default btn-sm" routerLink="/employees/{{employee.id}}/edit">Edit</button>
+            <button class="btn btn-outline-secondary btn-sm" routerLink="/employees/{{employee.id}}/edit">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="deleteEmployee(employee.id)">Delete</button>
         </td>
     </tr>
@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <button class="btn btn-default" (click)="openForm()">Add employee</button>
+        <button class="btn btn-outline-primary" (click)="openForm()">Add employee</button>
         <form #addEmployeeForm="ngForm" *ngIf="isViewable">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -49,7 +49,7 @@
                         (click)="addEmployee(addEmployeeForm)">
                     Save
                 </button>
-                <button class="btn btn-default" (click)="closeForm(addEmployeeForm)">Cancel</button>
+                <button class="btn btn-outline-secondary" (click)="closeForm(addEmployeeForm)">Cancel</button>
             </div>
         </form>
     </div>

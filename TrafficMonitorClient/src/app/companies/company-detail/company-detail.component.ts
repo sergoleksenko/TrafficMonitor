@@ -11,11 +11,11 @@ import {Employee} from '../../employees/employee';
     styleUrls: ['./company-detail.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-
     page = 1;
     id: number;
     company: Company = {name: '', quota: ''};
     employees: Employee[] = [];
+    isEdit = false;
 
     constructor(private activatedRoute: ActivatedRoute, private companiesService: CompaniesService,
                 private employeesService: EmployeesService) {
@@ -33,5 +33,14 @@ export class CompanyDetailComponent implements OnInit {
                 this.employees = employeesData;
             });
         });
+    }
+
+    onSave() {
+        this.companiesService.edit(this.id, new Company(this.company.name, this.company.quota))
+            .subscribe(data => this.isEdit = !this.isEdit);
+    }
+
+    onSave1(eee) {
+        console.log(eee);
     }
 }

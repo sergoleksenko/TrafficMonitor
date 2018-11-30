@@ -18,8 +18,8 @@ export class TrafficComponent implements OnInit {
         this.trafficService.generate().subscribe(data => {
             this.header = '';
             this.header = 'Generation was success';
-            this.message = 'Data was successfully generated!' +
-                'To see report please use \'Report\' button on the <a routerLink="">' + 'Companies</a>';
+            this.message = 'Data was successfully generated! ' +
+                'To see report please use \'Report\' button on the Companies page.';
         });
     }
 }
