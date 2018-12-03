@@ -15,6 +15,7 @@ export class EmployeesComponent implements OnInit {
     companies = [];
     page = 1;
     isViewable = false;
+    selectedCompany = 'All';
 
     constructor(private employeeService: EmployeesService, private companiesService: CompaniesService) {
     }
@@ -25,7 +26,9 @@ export class EmployeesComponent implements OnInit {
     }
 
     loadData() {
-        this.employeeService.all().subscribe((data: Employee[]) => this.employees = data);
+        this.page = 1;
+        this.employeeService.all().subscribe((data: Employee[]) =>
+            this.employees = data.filter(e => this.selectedCompany == 'All' || e.company == this.selectedCompany));
     }
 
     getCompanies() {

@@ -1,4 +1,11 @@
 <h1>Employees:</h1>
+<select class="form-control form-control-sm col-sm-2 my-2" name="filter-company" id="filter-company"
+        [(ngModel)]="selectedCompany" (change)="loadData()">
+    <option value="All">All</option>
+    <option *ngFor="let company of companies" [value]="company.viewValue">
+        {{company.viewValue}}
+    </option>
+</select>
 <table class="table table-striped">
     <thead>
     <tr>
