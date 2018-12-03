@@ -9,8 +9,8 @@
         </h3>
     </span>
     <span *ngIf="isEdit">
-        <input class="form-control-sm" name="name" type="text" [ngModel]="company.name" #name="ngModel" required>
-        <input class="form-control-sm" name="quota" type="number" style="width:6em" [ngModel]="company.quota"
+        <input class="form-control-sm m-1" name="name" type="text" [ngModel]="company.name" #name="ngModel" required>
+        <input class="form-control-sm my-1 mr-1" name="quota" type="number" style="width:6em" [ngModel]="company.quota"
                #quota="ngModel" required>
         <button [disabled]="name.invalid || quota.oninvalid" class="btn btn-success btn-sm"
                 (click)="onSave(name, quota)">Save</button>
