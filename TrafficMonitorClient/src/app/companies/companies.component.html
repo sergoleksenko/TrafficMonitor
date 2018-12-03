@@ -1,4 +1,4 @@
-<h1>Companies:</h1>
+<h1 class="m-3">Companies:</h1>
 <table class="table table-striped" onmousedown="return false">
     <thead>
     <tr>
@@ -26,7 +26,6 @@
     <div class="col-sm-4">
         <button class="btn btn-outline-primary" (click)="openForm()">Add company</button>
         <form #addCompanyForm="ngForm" *ngIf="isViewable">
-            <!--<form #addCompanyForm="ngForm" [hidden]="!isViewable">-->
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input class="form-control" name="name" id="name" type="text" [(ngModel)]="name" required>
