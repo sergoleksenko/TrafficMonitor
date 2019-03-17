@@ -3,7 +3,7 @@
     <span *ngIf="!isEdit">
         <h3>
             {{company.name}} (quota: {{company.quota}} TB)
-            <button class="btn btn-link" (click)="isEdit = !isEdit">
+            <button title="Edit" class="btn btn-link" (click)="isEdit = !isEdit">
                 <i class="fas fa-pencil-alt"></i>
             </button>
         </h3>

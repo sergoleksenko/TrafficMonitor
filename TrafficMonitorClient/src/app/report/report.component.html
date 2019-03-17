@@ -1,22 +1,24 @@
 <h1 class="m-3">Report:</h1>
-<table *ngIf="report.length > 0; else nodata" class="table table-striped">
-    <thead>
-    <tr>
-        <th>Company</th>
-        <th>User (TB)</th>
-        <th>Quota (TB)</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let r of report | paginate: { itemsPerPage: 10, currentPage: page }">
-        <td>{{r.name}}</td>
-        <td>{{r.used}}</td>
-        <td>{{r.quota}}</td>
-    </tr>
-    </tbody>
-</table>
-<div class="has-text-centered">
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+<div *ngIf="report.length > 0; else nodata">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>User (TB)</th>
+            <th>Quota (TB)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let r of report | paginate: { itemsPerPage: 10, currentPage: page }">
+            <td>{{r.name}}</td>
+            <td>{{r.used}}</td>
+            <td>{{r.quota}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="has-text-centered">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
 </div>
 <ng-template #nodata>
     <p>Good news! There are no companies that were exceeded quota this month!</p>
